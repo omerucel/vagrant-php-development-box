@@ -1,1 +1,1 @@
-Apache creates error.log and access.log in this folder.
+Apache creates error.log and access.log files in this folder.
