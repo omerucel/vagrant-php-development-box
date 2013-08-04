@@ -14,8 +14,22 @@ class apache{
 			File["/etc/php5/conf.d/20-xdebug.ini"],
 			Package["php5-curl"],
 			Package["php5-mysql"],
-			Exec["set_servername"]
+			Exec["set_servername"],
+			Exec["change_apache_user"],
+			Exec["change_apache_group"]
 		]
+	}
+
+	exec { "change_apache_user":
+		command => "replace 'export APACHE_RUN_USER=www-data' 'export APACHE_RUN_USER=vagrant' -- /etc/apache2/envvars",
+		require => Package["apache2"],
+		onlyif => "grep -c '^export APACHE_RUN_USER=www-data' /etc/apache2/envvars",
+	}
+
+	exec { "change_apache_group":
+		command => "replace 'export APACHE_RUN_GROUP=www-data' 'export APACHE_RUN_GROUP=vagrant' -- /etc/apache2/envvars",
+		require => Package["apache2"],
+		onlyif => "grep -c '^export APACHE_RUN_GROUP=www-data' /etc/apache2/envvars",
 	}
 
 	file { "/etc/apache2/mods-enabled/rewrite.load":

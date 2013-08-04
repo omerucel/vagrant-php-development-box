@@ -1,5 +1,7 @@
 <VirtualHost *:80>
     DocumentRoot /vagrant/public
+    SetEnv APP_ENV development
+
     <Directory />
         Options FollowSymLinks
         AllowOverride All
