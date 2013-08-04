@@ -1,4 +1,4 @@
-This vagrant project aims you to a PHP development box with minimum requirements. You should put your public files to public folder (like .htaccess, index.php etc.).
+This vagrant project aims you to a PHP development box with minimum requirements. Project based on Ubuntu Raring (13.04 64bit) and puppet. You should put your public files to public folder (like .htaccess, index.php etc.).
 
 # Usage
 
@@ -22,6 +22,8 @@ $ vagrant up
 * php-mysql
 
 # Default Ports
+
+You can use following ports to access installed services. Of course, you can change this ports in vagrant/Vagrantfile.
 
 ```ini
 MySQL = 3307
